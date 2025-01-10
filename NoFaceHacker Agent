@@ -1,0 +1,82 @@
+"""
+NoFace Hacker - Ethical Code Auditing and Security Testing Tool
+
+This tool is intended for educational purposes and ethical use only. 
+It helps developers identify vulnerabilities in their code and learn 
+secure coding practices through simulated hacking techniques.
+"""
+
+import argparse
+import os
+import re
+
+# Simulated vulnerability scanner
+def scan_code(file_path):
+    """
+    Scan the code for potential vulnerabilities.
+
+    Args:
+        file_path (str): Path to the file to scan.
+
+    Returns:
+        list: List of found vulnerabilities (simulated).
+    """
+    vulnerabilities = []
+    try:
+        with open(file_path, 'r') as file:
+            code = file.readlines()
+            for i, line in enumerate(code, start=1):
+                # Example: Simulate detecting hardcoded passwords
+                if re.search(r'password\s*=\s*["\'].*["\']', line, re.IGNORECASE):
+                    vulnerabilities.append(
+                        f"Potential hardcoded password at line {i}: {line.strip()}"
+                    )
+                # Example: Simulate detecting weak hashing algorithms
+                if "md5" in line.lower():
+                    vulnerabilities.append(
+                        f"Weak hashing algorithm (MD5) detected at line {i}: {line.strip()}"
+                    )
+    except Exception as e:
+        print(f"Error scanning file: {e}")
+    return vulnerabilities
+
+
+def main():
+    parser = argparse.ArgumentParser(
+        description="NoFace Hacker: Ethical Code Auditing and Security Testing Tool"
+    )
+    parser.add_argument(
+        "--target",
+        required=True,
+        help="Path to the target file or directory to scan.",
+    )
+    args = parser.parse_args()
+
+    if os.path.isfile(args.target):
+        print(f"Scanning file: {args.target}")
+        vulnerabilities = scan_code(args.target)
+        if vulnerabilities:
+            print("\n[!] Vulnerabilities Found:")
+            for vuln in vulnerabilities:
+                print(f" - {vuln}")
+        else:
+            print("\n[✓] No vulnerabilities found!")
+    elif os.path.isdir(args.target):
+        print(f"Scanning directory: {args.target}")
+        for root, _, files in os.walk(args.target):
+            for file in files:
+                file_path = os.path.join(root, file)
+                print(f"\nScanning file: {file_path}")
+                vulnerabilities = scan_code(file_path)
+                if vulnerabilities:
+                    print("\n[!] Vulnerabilities Found:")
+                    for vuln in vulnerabilities:
+                        print(f" - {vuln}")
+                else:
+                    print("\n[✓] No vulnerabilities found!")
+    else:
+        print("Invalid target path. Please provide a valid file or directory.")
+
+if __name__ == "__main__":
+    main()
+Just a glimspe code will be held till Jan 15
