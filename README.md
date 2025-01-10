@@ -57,11 +57,7 @@ The goal is simple: Stay ahead of malicious actors by thinking like them.
 
 To get started, clone the repository and install the dependencies:
 
-```bash
-git clone https://github.com/your-username/NoFaceAI.git
-cd NoFaceAI
-pip install -r requirements.txt
-```
+Code is being finalized will be public Jan 15
 
 ---
 
@@ -69,17 +65,16 @@ pip install -r requirements.txt
 
 Run the NoFaceAI CLI to start testing:
 
-```bash
-python nofaceai.py --target your_project_directory --scenario malware_injection
+
 ```
 
 For detailed usage and configuration options, refer to the [Documentation](./docs).
 
 ---
 
-## 🛡️ **Ethical Guidelines**
+## 🛡️ Ethical Guidelines
 
-NoFaceAI is designed for **ethical hacking and defensive purposes only**. Misuse of this tool to attack systems without authorization is strictly prohibited. Always obtain proper consent before running tests on any system.
+NoFaceAI is designed for **ethical hacking and defensive purposes only**. Misuse of this tool to attack systems without authorization is strictly prohibited. Always obtain proper consent before running tests on any system. Once public code will be edited to prevent this.
 
 ---
 
